@@ -8,6 +8,7 @@ iserver_is_a_vm: True
 iserver_user: deploy
 iserver_become: sudo ## do not chanage this (use doas for OpenBSD) ##
 iserver_kickstart_become: "{{ iserver_become }}"
+iserver_cloud_init_enabled: True
 iserver_lock_root: False
 
 ### BASE PACKAGES ###
@@ -71,6 +72,9 @@ iserver_deb_packages:
   # - dnsutils
   # - pv
   # - screen
+  
+iserver_systemd_services_started:
+  - cloud-init
 
 # packages to install on every OpenBSD server
 # qemu-guest-agent is not funtional on OpenBSD (see notes.md)
