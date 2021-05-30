@@ -8,8 +8,8 @@ iserver_is_a_vm: True
 iserver_user: deploy
 iserver_become: sudo ## do not chanage this (use doas for OpenBSD) ##
 iserver_kickstart_become: "{{ iserver_become }}"
-iserver_cloud_init_enabled: True
 iserver_lock_root: False
+iserver_cloud_init_enabled: True
 
 ### BASE PACKAGES ###
 iserver_debian_repos:
@@ -54,6 +54,7 @@ iserver_alpine_repos:
 iserver_deb_packages:
   - openssh-server   # needed for Travis testing
   - qemu-guest-agent # needed by packer
+  - cloud-guest-utils # used by growpart
   - sudo
   - python-apt       # used by ansible
   - haveged          # prevent vm boot delays
@@ -62,7 +63,9 @@ iserver_deb_packages:
   - psmisc           # includes pstree
   - wget
   - curl
-  - jq 
+  - jq
+  - nfs-common
+  - zsh
   # - lsof
   # - lshw
   # - ncdu
