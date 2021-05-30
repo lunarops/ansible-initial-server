@@ -65,7 +65,7 @@ iserver_deb_packages:
   - curl
   - jq
   - nfs-common
-  - zsh
+  # - zsh
   # - lsof
   # - lshw
   # - ncdu
